@@ -1,9 +1,10 @@
-import './App.css';
-import {useState} from 'react'
+import { useState } from 'react';
 
 function App() {
   return (
-    <div></div>
+    <div>
+      <h1>hello</h1>
+    </div>
   );
 }
 
