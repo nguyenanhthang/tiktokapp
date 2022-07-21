@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     .inner {
+        padding:0 var(--header-default-layout-horizontal-space);
         height: 100%;
         width: var(--header-default-layout-width);
         display: flex;
@@ -86,6 +87,7 @@
                 background-color:transparent;
                 margin-left:25px;
                 padding:4px 8px;
+                cursor: pointer;
             }
         }
     }

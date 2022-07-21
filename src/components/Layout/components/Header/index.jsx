@@ -25,6 +25,27 @@ const Menu_Item = [
     {
         icon:<FontAwesomeIcon icon={faEarthAsia} />,
         title: 'vietnamese',
+        children:{
+            title:'language',
+            data:[
+                {
+                    code:'vi',
+                    title:"Vietnamese"
+                },
+                {
+                    code:'en',
+                    title:"English"
+                },
+                {
+                    code:'cn',
+                    title:"China"
+                },
+                {
+                    code:'kor',
+                    title:"Korean"
+                }
+            ]
+        }
     },
     {
         icon:<FontAwesomeIcon icon={faCircleQuestion} />,
