@@ -6,7 +6,8 @@ import styles from './Menu.module.scss';
 import MenuItem from'./MenuItem.jsx';
 import Header from './Header';
 const cx = classNames.bind(styles);
-function Menu({children,items=[],onChange}) {
+const defaultFn = ()=>{}
+function Menu({children,items=[],onChange=defaultFn}) {
     const [history,setHistory] = useState([{
         data:items
     }])
@@ -26,6 +27,7 @@ function Menu({children,items=[],onChange}) {
     }
     return (
         <Tippy
+        offset={[12,8]}
         delay={[0,700]}
             interactive
             placement="bottom-end"
@@ -39,6 +41,7 @@ function Menu({children,items=[],onChange}) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={()=>{setHistory(prev => prev.slice(0,1))}}
         >
             {children}
         </Tippy>
