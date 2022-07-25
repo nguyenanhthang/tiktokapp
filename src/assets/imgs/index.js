@@ -1,4 +1,5 @@
-const image ={
-    logo: require('~/assets/imgs/logo.svg').default
+const images ={
+    logo: require('~/assets/imgs/logo.svg').default,
+    noImage:require('~/assets/imgs/noImages.png'),
 }
-export default image
+export default images

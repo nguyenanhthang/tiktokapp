@@ -28,6 +28,8 @@ import style from './Header.module.scss';
 import AccountItem from '~/components/Accountitem';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
+import { UploadIcon } from '~/components/icons';
+import Image from '~/components/image';
 const cx = classNames.bind(style);
 const Menu_Item = [
     {
@@ -81,7 +83,7 @@ function Header() {
             default:
         }
     };
-    const user_menu=[
+    const user_menu = [
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'view profile',
@@ -104,7 +106,7 @@ function Header() {
             to: '/log out',
             separate: true,
         },
-    ]
+    ];
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -138,13 +140,18 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0,200]} content="upload video" placement='bottom'>
+                            <Tippy delay={[0, 200]} content="upload video" placement="bottom">
                                 <button className={cx('actions-btn')}>
                                     <FontAwesomeIcon icon={faCloudUpload} />
                                 </button>
                                 {/* <button className={cx('actions-btn')}>
                                     <FontAwesomeIcon icon={faMessage} />
                                 </button> */}
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="send mess" placement="bottom">
+                                <button className={cx('actions-btn')}>
+                                    <UploadIcon />
+                                </button>
                             </Tippy>
                         </>
                     ) : (
@@ -153,13 +160,18 @@ function Header() {
                             <Button primary>Login</Button>
                         </>
                     )}
-                    <Menu items={currentUser ? user_menu : Menu_Item } onChange={handleMenuChange}>
+                    <Menu items={currentUser ? user_menu : Menu_Item} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img className={cx('user-avatar')} src="https://luv.vn/wp-content/uploads/2021/11/avatar-gai-xinh-41.jpg" alt="nguyen van a" />
-                        ):(
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                            <Image
+                                className={cx('user-avatar')}
+                                src="https://luv.vn/wp-content/uploads/2021/11/avatar-gai-xinh-41.jpg"
+                                alt="nguyen van a"
+                                // fallBack="https://1.bigdata-vn.com/wp-content/uploads/2021/12/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May.jpg"
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
                         )}
                     </Menu>
                 </div>
