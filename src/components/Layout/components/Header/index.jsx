@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-
+import { Link } from 'react-router-dom';
 import {
     faEllipsisVertical,
     faEarthAsia,
@@ -13,7 +13,7 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-
+import routesConfig from '~/config/routes'
 import Button from '~/components/Button';
 import image from '~/assets/imgs/index';
 import style from './Header.module.scss';
@@ -96,7 +96,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={image.logo} alt="TikTok" />
+                <Link to={routesConfig.home} className={cx('logo')}>
+                    <img src={image.logo} alt="TikTok" />
+                </Link>
                 <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
