@@ -29,6 +29,7 @@ function Menu({children,items=[],onChange=defaultFn,hideOnClick=false}) {
         <Tippy
         offset={[12,8]}
         delay={[0,700]}
+        
         hideOnClick={hideOnClick}
             interactive
             placement="bottom-end"
@@ -38,11 +39,12 @@ function Menu({children,items=[],onChange=defaultFn,hideOnClick=false}) {
                         {history.length > 1 && <Header title="language" onBack={()=>{
                             setHistory(prev => prev.slice(0,prev.length -1))
                         }}/>}
-                        {renderItem()}
+                        <div className={cx('menu-scrollable')}>{renderItem()}</div>
                     </PopperWrapper>
                 </div>
             )}
             onHide={()=>{setHistory(prev => prev.slice(0,1))}}
+            
         >
             {children}
         </Tippy>

@@ -3,11 +3,16 @@
     --search-height:46px;
     --search-top-spacer:9px;
     --search-button-width:52px;
+    z-index: 10;
+    position: fixed;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: var(--header-default-layout-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
     justify-content: center;
+    background-color: #ffff;
     .inner {
         padding:0 var(--header-default-layout-horizontal-space);
         height: 100%;

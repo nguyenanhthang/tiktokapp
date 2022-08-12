@@ -46,6 +46,70 @@ const Menu_Item = [
                     code: 'kor',
                     title: 'Korean',
                 },
+                {
+                    code: 'vi',
+                    title: 'Vietnamese',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'cn',
+                    title: 'China',
+                },
+                {
+                    code: 'kor',
+                    title: 'Korean',
+                },
+                {
+                    code: 'vi',
+                    title: 'Vietnamese',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'cn',
+                    title: 'China',
+                },
+                {
+                    code: 'kor',
+                    title: 'Korean',
+                },
+                {
+                    code: 'vi',
+                    title: 'Vietnamese',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'cn',
+                    title: 'China',
+                },
+                {
+                    code: 'kor',
+                    title: 'Korean',
+                },
+                {
+                    code: 'vi',
+                    title: 'Vietnamese',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'cn',
+                    title: 'China',
+                },
+                {
+                    code: 'kor',
+                    title: 'Korean',
+                },
             ],
         },
     },
