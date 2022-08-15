@@ -13,7 +13,7 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import routesConfig from '~/config/routes'
+import Config from '~/config'
 import Button from '~/components/Button';
 import image from '~/assets/imgs/index';
 import style from './Header.module.scss';
@@ -160,7 +160,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={Config.routes.home} className={cx('logo')}>
                     <img src={image.logo} alt="TikTok" />
                 </Link>
                 <Search />

@@ -1,9 +1,9 @@
 import TippyH from '@tippyjs/react/headless';
-import  * as searchServices from '~/apiServices/searchService';
+import  * as searchServices from '~/Services/searchService';
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, fas } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import AccountItem from '~/components/Accountitem';
 import style from './Search.module.scss';
 import { useDebounce } from '~/hooks';
