@@ -4,10 +4,10 @@ import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import AccountItem from '~/components/Accountitem';
+import AccountItem from '~/components/Accountitem/Accountitem';
 import style from './Search.module.scss';
-import { useDebounce } from '~/hooks';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { useDebounce } from '~/hooks/hooks';
+import { Wrapper as PopperWrapper } from '~/components/Popper/Popper';
 const cx = classNames.bind(style);
 function Search() {
     const [searchValue, setSearchValue] = useState('');

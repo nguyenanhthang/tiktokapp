@@ -13,14 +13,14 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Config from '~/config'
-import Button from '~/components/Button';
+import Config from '~/config/config'
+import Button from '~/components/Button/Button';
 import image from '~/assets/imgs/index';
 import style from './Header.module.scss';
-import Menu from '~/components/Popper/Menu';
+import Menu from '~/components/Popper/Menu/Menu';
 import 'tippy.js/dist/tippy.css';
-import { UploadIcon } from '~/components/icons';
-import Image from '~/components/image';
+import { UploadIcon } from '~/components/icons/icons';
+import Image from '~/components/image/image';
 import Search from '../Search';
 const cx = classNames.bind(style);
 const Menu_Item = [

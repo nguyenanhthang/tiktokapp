@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Tippy from '@tippyjs/react/headless';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { Wrapper as PopperWrapper } from '~/components/Popper/Popper';
 import styles from './Menu.module.scss';
 import MenuItem from'./MenuItem.jsx';
 import Header from './Header';
