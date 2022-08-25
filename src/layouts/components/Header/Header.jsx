@@ -21,7 +21,7 @@ import Menu from '~/components/Popper/Menu/Menu';
 import 'tippy.js/dist/tippy.css';
 import { UploadIcon } from '~/components/icons/icons';
 import Image from '~/components/image/image';
-import Search from '../Search';
+import Search from '../Search/Search';
 const cx = classNames.bind(style);
 const Menu_Item = [
     {
@@ -123,7 +123,7 @@ const Menu_Item = [
         title: 'keyboard shortcuts',
     },
 ];
-const currentUser = true;
+const currentUser = false;
 function Header() {
     const handleMenuChange = (menuItem) => {
         switch (menuItem) {
@@ -184,7 +184,7 @@ function Header() {
                     ) : (
                         <>
                             <Button text>Upload</Button>
-                            <Button primary>Login</Button>
+                            <Button primary to="/">Login</Button>
                         </>
                     )}
                     <Menu items={currentUser ? user_menu : Menu_Item} onChange={handleMenuChange}>

@@ -15,20 +15,20 @@ function Search() {
     const [showResult,setShowResult]= useState(true)
     const [loading,setLoading]= useState(false)
     const inputRef = useRef();
-    const debounce = useDebounce(searchValue,500)
+    const debouncedValue = useDebounce(searchValue,500)
     useEffect(() => {
-        if(!debounce.trim()){
+        if(!debouncedValue.trim()){
             setSearchResults([])
             return;
         }
         const fetApi = async()=>{
             setLoading(true)
-            const results = await searchServices.search(debounce)
+            const results = await searchServices.search(debouncedValue)
             setSearchResults(results)
             setLoading(false)
         }
         fetApi()
-    }, [debounce]);
+    }, [debouncedValue]);
     const handleOutside =()=>{
         setShowResult(false)
     }
