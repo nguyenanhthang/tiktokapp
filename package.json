@@ -26,20 +26,15 @@
     },
     "devDependencies": {
         "babel-plugin-module-resolver": "^4.1.0",
-        "concurrently": "^9.1.2",
-        "cross-env": "^7.0.3",
-        "electron": "^35.1.5",
-        "wait-on": "^8.0.3"
+        "electron": "^35.1.5"
     },
     "scripts": {
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
-        "dev:web": "cross-env BROWSER=none react-app-rewired start",
-        "dev:python": "python3 python_ai/server.py",
-        "dev:electron": "wait-on tcp:3000 && electron .",
-        "start:desktop": "concurrently -k \"npm run dev:python\" \"npm run dev:web\" \"npm run dev:electron\""
+        "start:desktop": "node scripts/dev-runner.js desktop",
+        "start:web-ai": "node scripts/dev-runner.js web"
     },
     "eslintConfig": {
         "extends": [

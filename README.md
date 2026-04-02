@@ -1,31 +1,36 @@
 # AI Desktop App (Electron + React + Python)
 
-Project này đã được mở rộng từ giao diện React hiện có để chạy như một **desktop app với Electron** và gọi sang **Python AI API**.
+Project này kết hợp 3 phần:
 
-## Kiến trúc
+- **React**: giao diện người dùng.
+- **Python FastAPI**: AI service (`/health`, `/chat`).
+- **Electron**: đóng gói React thành desktop app.
 
-- **Electron main process**: tạo cửa sổ desktop và tự chạy Python service.
-- **React renderer**: giao diện người dùng (route `/ai`).
-- **Python FastAPI**: endpoint AI (`POST /chat`).
+## Điểm đã chỉnh để dễ chạy hơn
 
-## Cấu trúc mới
+Phiên bản này **không còn dùng** `concurrently`, `wait-on`, `cross-env`.
+Mọi thứ được chạy bằng script Node thuần ở `scripts/dev-runner.js` để giảm phụ thuộc npm.
 
-- `electron-main.js`: Electron bootstrap + lifecycle + start Python process.
-- `electron-preload.js`: preload bridge cho renderer.
-- `python_ai/server.py`: Python AI API.
-- `python_ai/requirements.txt`: dependency backend.
-- `src/pages/AIAssistant/*`: giao diện chat prompt.
-- `src/Services/aiService.jsx`: client gọi API Python.
+## Cấu trúc chính
+
+- `electron-main.js`: Electron main process, tự start Python khi mở app.
+- `electron-preload.js`: preload bridge.
+- `python_ai/server.py`: backend AI mẫu.
+- `src/pages/AIAssistant/*`: màn hình AI.
+- `src/Services/aiService.jsx`: gọi Python API.
+- `scripts/dev-runner.js`: chạy nhiều process dev không cần thêm package orchestrator.
 
 ## Cài đặt
 
-### 1) Cài dependency Node
+### 1) Node dependencies
 
 ```bash
 npm install
 ```
 
-### 2) Cài dependency Python
+> Nếu môi trường của bạn chặn npm registry (403), bạn vẫn có thể chạy web + python nếu máy đã có sẵn dependencies từ trước.
+
+### 2) Python dependencies
 
 ```bash
 python3 -m venv .venv
@@ -33,27 +38,29 @@ source .venv/bin/activate
 pip install -r python_ai/requirements.txt
 ```
 
-## Chạy ứng dụng desktop
+## Chạy
+
+### Chạy web + python (không mở Electron)
+
+```bash
+npm run start:web-ai
+```
+
+### Chạy desktop Electron + python + react
 
 ```bash
 npm run start:desktop
 ```
 
-Lệnh này sẽ chạy cùng lúc:
+Lưu ý: script desktop dùng `npx electron .`, nên khi chạy lần đầu máy cần tải `electron` package.
 
-1. Python AI server tại `http://127.0.0.1:8000`
-2. React dev server tại `http://localhost:3000`
-3. Electron window load React app
-
-## API hiện tại
+## API
 
 ### `GET /health`
 
-Kiểm tra service.
+Kiểm tra service đang sống.
 
 ### `POST /chat`
-
-Body:
 
 ```json
 {
@@ -61,16 +68,8 @@ Body:
 }
 ```
 
-Response:
-
 ```json
 {
   "answer": "..."
 }
 ```
-
-## Gợi ý mở rộng AI thật
-
-- Gắn OpenAI API hoặc model local (Transformers/Ollama).
-- Thêm streaming response (SSE/WebSocket).
-- Thêm prompt history + lưu local database (SQLite).
