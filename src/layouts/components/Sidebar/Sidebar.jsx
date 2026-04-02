@@ -12,6 +12,7 @@ function Sidebar() {
                 <MenuItem title="For You" to={config.routes.home} activeIcons={<HomeActiveIcon/>} icons={<HomeGroupIcon/>}/>
                 <MenuItem title="Following" to={config.routes.following } activeIcons={<UserActiveIcon/>}icons={<UserGroupIcon/>}/>
                 <MenuItem title="Live" to={config.routes.live} activeIcons={<LiveActiveIcon/>}icons={<LiveGroupIcon/>}/>
+                <MenuItem title="AI" to={config.routes.ai} activeIcons={<UserActiveIcon/>}icons={<UserGroupIcon/>}/>
             </Menu>
             <SuggestedAccounts label="Suggest Accounts"/>
         </aside>
