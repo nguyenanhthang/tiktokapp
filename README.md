@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# AI Desktop App (Electron + React + Python)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project này kết hợp 3 phần:
 
-## Available Scripts
+- **React**: giao diện người dùng.
+- **Python FastAPI**: AI service (`/health`, `/chat`).
+- **Electron**: đóng gói React thành desktop app.
 
-In the project directory, you can run:
+## Điểm đã chỉnh để dễ chạy hơn
 
-### `npm start`
+Phiên bản này **không còn dùng** `concurrently`, `wait-on`, `cross-env`.
+Mọi thứ được chạy bằng script Node thuần ở `scripts/dev-runner.js` để giảm phụ thuộc npm.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Cấu trúc chính
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `electron-main.js`: Electron main process, tự start Python khi mở app.
+- `electron-preload.js`: preload bridge.
+- `python_ai/server.py`: backend AI mẫu.
+- `src/pages/AIAssistant/*`: màn hình AI.
+- `src/Services/aiService.jsx`: gọi Python API.
+- `scripts/dev-runner.js`: chạy nhiều process dev không cần thêm package orchestrator.
 
-### `npm test`
+## Cài đặt
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1) Node dependencies
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Nếu môi trường của bạn chặn npm registry (403), bạn vẫn có thể chạy web + python nếu máy đã có sẵn dependencies từ trước.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2) Python dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r python_ai/requirements.txt
+```
 
-### `npm run eject`
+## Chạy
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Chạy web + python (không mở Electron)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run start:web-ai
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Chạy desktop Electron + python + react
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run start:desktop
+```
 
-## Learn More
+Lưu ý: script desktop dùng `npx electron .`, nên khi chạy lần đầu máy cần tải `electron` package.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `GET /health`
 
-### Code Splitting
+Kiểm tra service đang sống.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `POST /chat`
 
-### Analyzing the Bundle Size
+```json
+{
+  "prompt": "Hãy gợi ý kiến trúc app AI"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "answer": "..."
+}
+```

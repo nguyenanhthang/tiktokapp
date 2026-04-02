@@ -25,13 +25,16 @@
         "web-vitals": "^2.1.4"
     },
     "devDependencies": {
-        "babel-plugin-module-resolver": "^4.1.0"
+        "babel-plugin-module-resolver": "^4.1.0",
+        "electron": "^35.1.5"
     },
     "scripts": {
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject"
+        "eject": "react-app-rewired eject",
+        "start:desktop": "node scripts/dev-runner.js desktop",
+        "start:web-ai": "node scripts/dev-runner.js web"
     },
     "eslintConfig": {
         "extends": [
@@ -50,5 +53,6 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "main": "electron-main.js"
 }
